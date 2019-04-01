@@ -7,13 +7,24 @@ public abstract class AState {
     private AState cameFrom;
     private int cost;
 
-    public AState(AState cameFrom,int cost) {
+    public int getCost() {
+        return cost;
+    }
+
+    public AState(AState cameFrom, int cost) {
        this.cameFrom = cameFrom;
         this.cost = cost;
     }
+//
+//    @Override
+//    public boolean equals(Object o) {
+//        if (this == o) return true;
+//        if (o == null || getClass() != o.getClass()) return false;
+//        AState mState = (AState) o;
+//        return (this.cost==mState.cost);
+//    }
 
-    @Override
-    public abstract boolean equals(Object o);
+
 
     @Override
     public abstract String toString();
@@ -24,5 +35,9 @@ public abstract class AState {
 
     public AState getCameFrom() {
         return cameFrom;
+    }
+
+    public void updateCost(int newCost){
+        cost=newCost;
     }
 }

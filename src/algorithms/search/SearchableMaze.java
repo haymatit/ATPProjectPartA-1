@@ -15,10 +15,9 @@ public class SearchableMaze implements ISearchable{
         endState=new MazeState(grid.getGoalPosition());
         startState=new MazeState(grid.getStartPosition());
         visits=new boolean[m.getRowSize()][m.getColSize()];
-        reset();
     }
 
-    private void reset(){
+    public void reset(){
         for(int i=0;i<visits.length;i++){
             for (int j=0;j<visits[0].length;j++)
                 visits[i][j]=false;
@@ -72,6 +71,14 @@ public class SearchableMaze implements ISearchable{
             return true;
         }
         return false;
+    }
+
+    public void updateCostFromEnd(AState state){
+        MazeState Ms=(MazeState) state;
+        Position P=Ms.getCurrentPosition();
+        Position Pe=endState.getCurrentPosition();
+        int cost=Math.abs(P.getRowIndex()-Pe.getRowIndex())+Math.abs(P.getColumnIndex()-Pe.getColumnIndex());
+        state.updateCost(cost);
     }
 
 }

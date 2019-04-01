@@ -12,10 +12,11 @@ public class DepthFirstSearch extends ASearchingAlgorithm{
     }
 
     public Solution solve(ISearchable s){
-
+        s.reset();
         stack.push(s.getStartState());
+        s.changeToVisit(s.getStartState());
         AState end=null;
-        //s.reset();
+
         while(!stack.isEmpty()) {
             AState tmp = stack.pop();
             numberOfNodesEvaluated++;

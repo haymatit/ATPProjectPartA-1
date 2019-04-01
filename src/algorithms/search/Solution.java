@@ -22,6 +22,7 @@ public class Solution {
             pathSol.add(skipper);
             skipper=stack.pop();
         }
+        pathSol.add(skipper);
         return pathSol;
     }
 }
