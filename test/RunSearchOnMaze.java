@@ -11,10 +11,11 @@ public class RunSearchOnMaze {
         //maze.print();//we added
 
         SearchableMaze searchableMaze = new SearchableMaze(maze);
-        //solveProblem(searchableMaze, new DepthFirstSearch());
 
-        //solveProblem(searchableMaze, new BreadthFirstSearch());
+
+        solveProblem(searchableMaze, new BreadthFirstSearch());
         solveProblem(searchableMaze, new BestFirstSearch());
+        solveProblem(searchableMaze, new DepthFirstSearch());
 
 
     }

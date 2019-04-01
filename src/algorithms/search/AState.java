@@ -23,8 +23,14 @@ public abstract class AState {
 //        AState mState = (AState) o;
 //        return (this.cost==mState.cost);
 //    }
-
-
+//
+//    public int compare(AState s2) {
+//        if(this.getCost() < s2.getCost())
+//            return 1;
+//        else if(this.getCost()>s2.getCost())
+//            return -1;
+//        return 0;
+//    }
 
     @Override
     public abstract String toString();
