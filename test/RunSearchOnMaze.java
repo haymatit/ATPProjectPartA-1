@@ -9,15 +9,10 @@ public class RunSearchOnMaze {
         IMazeGenerator mg = new MyMazeGenerator();
         Maze maze = mg.generate(1000, 1000);
         //maze.print();//we added
-
         SearchableMaze searchableMaze = new SearchableMaze(maze);
-
-
         solveProblem(searchableMaze, new BreadthFirstSearch());
         solveProblem(searchableMaze, new BestFirstSearch());
         solveProblem(searchableMaze, new DepthFirstSearch());
-
-
     }
     private static void solveProblem(ISearchable domain, ISearchingAlgorithm searcher) {
         //Solve a searching problem with a searcher

@@ -33,6 +33,14 @@ public abstract class AState {
 //    }
 
     @Override
+    public abstract boolean equals(Object o);
+
+    @Override
+    public int hashCode() {
+        return toString().hashCode();
+    }
+
+    @Override
     public abstract String toString();
 
     public void setCameFrom(AState cameFrom){

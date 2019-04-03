@@ -5,10 +5,10 @@ import java.util.Collection;
 import java.util.PriorityQueue;
 
 public class BestFirstSearch extends BreadthFirstSearch{
-    PriorityQueue<AState> Pqueue=new PriorityQueue<>(new AStateComperator());
 
     public BestFirstSearch() {
         super("Best First Search");
+        queue =new PriorityQueue<>(new AStateComperator());;
     }
 
 
@@ -17,15 +17,15 @@ public class BestFirstSearch extends BreadthFirstSearch{
     }
 
     private boolean checkEmpty(){
-        return Pqueue.isEmpty();
+        return queue.isEmpty();
     }
 
     private AState structerPop(){
-        return Pqueue.poll();
+        return queue.poll();
     }
 
     private void structerPush(AState state){
-        Pqueue.add(state);
+        queue.add(state);
     }
 }
 

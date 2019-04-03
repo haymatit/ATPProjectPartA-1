@@ -3,9 +3,11 @@ package algorithms.search;
 import java.util.*;
 
 public class BreadthFirstSearch extends ASearchingAlgorithm{
-    LinkedList<AState> queue=new LinkedList<>();
+    Queue<AState> queue;
+    HashSet<AState> visits=new HashSet<>();
     public BreadthFirstSearch() {
         super("Breadth First Search");
+        queue=new LinkedList<>();
     }
 
     protected BreadthFirstSearch(String name) {
@@ -13,12 +15,12 @@ public class BreadthFirstSearch extends ASearchingAlgorithm{
     }
 
     public Solution solve(ISearchable s){
-        s.reset();
+        //s.reset();
         structerPush(s.getStartState());
-        s.changeToVisit(s.getStartState());
-        s.updateCostFromEnd(s.getStartState());
+//        s.changeToVisit(s.getStartState());
+//        s.updateCostFromEnd(s.getStartState());
+        visits.add(s.getStartState());
         AState end=null;
-
         while(!checkEmpty()) {
             AState tmp = structerPop();
             numberOfNodesEvaluated++;
@@ -27,13 +29,17 @@ public class BreadthFirstSearch extends ASearchingAlgorithm{
                 break;
             }
             ArrayList<AState> possibleStates= s.getAllPossibleStates(tmp);
+            Collections.shuffle(possibleStates);
             for(int i=0;i<possibleStates.size();i++) {
                 AState node=possibleStates.get(i);
-                s.updateCostFromEnd(node);
-                s.changeToVisit(node);
-                structerPush(node);
-                node.setCameFrom(tmp);
-
+//                s.updateCostFromEnd(node);
+//                s.changeToVisit(node);
+                if(!visits.contains(node)) {
+                    //s.changeToVisit(node);
+                    visits.add(node);
+                    structerPush(node);
+                    node.setCameFrom(tmp);
+                }
             }
         }
         Solution sol=new Solution(end);

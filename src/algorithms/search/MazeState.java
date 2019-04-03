@@ -30,9 +30,7 @@ public class MazeState extends AState{
 
     @Override
     public String toString() {
-        return "MazeState{" +
-                "current=" + current.toString() +
-                '}';
+        return current.toString();
     }
 
     public Position getCurrentPosition() {
