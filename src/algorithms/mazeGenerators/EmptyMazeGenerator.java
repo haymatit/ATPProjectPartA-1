@@ -11,7 +11,7 @@ public class EmptyMazeGenerator extends AMazeGenerator {
     /**
      * This method is used to generate a empty maze.
      * we create a grid full of 0's.
-     * @param row This is the first paramter to generate method
+     * @param row This is the first parameter to generate method
      * @param col  This is the second parameter to generate method
      * @return Maze This returns the maze we create.
      */

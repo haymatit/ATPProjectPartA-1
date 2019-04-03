@@ -3,30 +3,38 @@ package algorithms.search;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.PriorityQueue;
-
+/**
+ * The BestFirstSearch extends BreadthFirstSearch, that extends ASearchingAlgorithm and implements ISearchingAlgorithm.
+ * it override only the Queue from BFS with PriorityQueue and solve the problem using the Best First Search algorithm.
+ * that way we can use the same code but with different Data structures.
+ * there are a PriorityQueue the algorithm use.
+ * and there are a HashSet the algorithm needs to track the visits nodes(from BFS).
+ *
+ * @author may & hay
+ */
 public class BestFirstSearch extends BreadthFirstSearch{
 
     public BestFirstSearch() {
         super("Best First Search");
-        queue =new PriorityQueue<>(new AStateComperator());;
+        queue =new PriorityQueue<>(new AStateComparator());;
     }
 
 
-    public Solution solve(ISearchable s){
-        return super.solve(s);
-    }
+ //   public Solution solve(ISearchable s){
+//        return super.solve(s);
+  //  }
 
-    private boolean checkEmpty(){
-        return queue.isEmpty();
-    }
-
-    private AState structerPop(){
-        return queue.poll();
-    }
-
-    private void structerPush(AState state){
-        queue.add(state);
-    }
+//    private boolean checkEmpty(){
+//        return queue.isEmpty();
+//    }
+//
+//    private AState structerPop(){
+//        return queue.poll();
+//    }
+//
+//    private void structerPush(AState state){
+//        queue.add(state);
+//    }
 }
 
 //public class BestFirstSearch extends ASearchingAlgorithm{

@@ -4,11 +4,9 @@ import algorithms.mazeGenerators.Position;
 
 import java.util.ArrayList;
 /**
- * The SearchableMaze implements ISearchable, the class describes the  Maze Problem.
- * it forces every class that implements him to implement:?
- * the method getStartState that gives the start state of the problem.
- * the method getEndState that gives the end state of the problem.
- * the method getAllPossibleStates returns the successors of some state in the problem.
+ * The SearchableMaze implements ISearchable, the class describes the Maze Problem.
+ * it override the getters for the start state and the end state,
+ * and the method getAllPossibleStates that returns the successors of some state in the Maze problem.
  *
  * @author may & hay
  */
@@ -34,7 +32,15 @@ public class SearchableMaze implements ISearchable{
     public AState getEndState() {
         return endState;
     }
-
+    /**
+     * This method is used to find the next possible states in the maze.
+     * we take the next cell if they are: up,down,left or right.
+     * then if we can move to some of those cells we take cell at an angle from our current cell.
+     * we use the private method addToList that take cares that the cell is legal.
+     *
+     * @param state This is the first parameter to getAllPossibleStates method
+     * @return ArrayList<AState> This returns the successors of some state.
+     */
     @Override
     public ArrayList<AState> getAllPossibleStates(AState state) {
         MazeState currentM=(MazeState)state;
@@ -60,12 +66,26 @@ public class SearchableMaze implements ISearchable{
         }
         return neighbors;
     }
-
+    /**
+     * This method make sure that the cell we get is legal.
+     * we check if the indexes are in the grid bounds,
+     * if the list of neighbors does not contains this cell,
+     * and if this cell is a way and not a wall.
+     * after those tests we update the cost of the state with the parameter we got.
+     *
+     * @param neighbors This is the first parameter to getAllPossibleStates method
+     * @param i This is the second parameter to getAllPossibleStates method
+     * @param j This is the third parameter to getAllPossibleStates method
+     * @param cost This is the fourth parameter to getAllPossibleStates method
+     * @return ArrayList<AState> This returns the successors of some state.
+     */
     private boolean addToList(ArrayList<AState> neighbors,int i, int j,int cost){
+        MazeState MS=new MazeState(new Position(i, j));
+        if(neighbors.contains(MS))
+            return false;
         if(i<0||j<0||i>=grid.getRowSize()||j>=grid.getColSize())
             return false;
         else if(grid.getPositionType(i,j)==0) {
-            MazeState MS=new MazeState(new Position(i, j));
             neighbors.add(MS);
             MS.updateCost(cost);
             return true;
