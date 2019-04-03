@@ -1,6 +1,6 @@
 package algorithms.mazeGenerators;
 /**
- * The IMazeGenerator is a interface
+ * The IMazeGenerator is a interface.
  * it forces every class that implements him to implement:
  * the method measureAlgorithmTimeMillis that measure the time of an algorithm
  * the method generate that generate a Maze
